@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.repository.MemoMapper">
+    <resultMap type="com.example.demo.entity.Memo" id="memo">
+        <result column="mark_div" property="mark_div"/>
+    </resultMap>
+	<select id="findById" resultMap="memo">
+        SELECT
+            id,
+            title,
+            category,
+            description,
+            date,
+            mark_div
+         FROM
+            memos
+         WHERE
+            id = #{id}
+    </select>
+	<select id="findAll" resultMap="memo">
+        SELECT
+            id,
+            title,
+            category,
+            description,
+            date,
+            mark_div
+         FROM
+            memos
+    </select>
+	<insert id="insertOne">
+     INSERT into memos VALUES (
+           #{id,jdbcType=INTEGER},
+           #{title,jdbcType=VARCHAR},
+           #{category,jdbcType=VARCHAR}, 
+           #{description,jdbcType=VARCHAR}, 
+           #{date,jdbcType=VARCHAR},
+           #{mark_div,jdbcType=INTEGER}
+      )
+    </insert>
+	<update id="updateOne">
+     UPDATE  memos
+     SET   title = #{title,jdbcType=VARCHAR},
+           category = #{category,jdbcType=VARCHAR}, 
+           description = #{description,jdbcType=VARCHAR}, 
+           date = #{date,jdbcType=VARCHAR},
+           mark_div = #{mark_div,jdbcType=INTEGER}
+     WHERE   id = #{id}
+    </update>
+	<delete id="deleteOne">
+     DELETE  FROM  memos
+     WHERE   id = #{id}  
+    </delete>
+</mapper>

@@ -1,0 +1,11 @@
+DROP TABLE IF EXISTS memos;
+
+CREATE TABLE IF NOT EXISTS memos (
+    id INT(50) PRIMARY KEY AUTO_INCREMENT,
+    title VARCHAR(50) NOT NULL,
+    category VARCHAR(50) NOT NULL,
+    description VARCHAR(255) NOT NULL,
+    date VARCHAR(50) NOT NULL,
+    mark_div INT(50) NOT NULL
+);
+
